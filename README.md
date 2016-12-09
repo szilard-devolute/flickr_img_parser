@@ -1,8 +1,6 @@
 # FlickrImgParser
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/flickr_img_parser`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+TODO: With FlickrImgParser you can download the most interesting images from Flickr and save the as a collage.
 
 ## Installation
 
@@ -22,7 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run the following command from the command line:
+
+		$ be bin/flickr_img_parser words ARGV
+
+
+ARGV can be any number of keywords, so you could say:
+		
+		$ be bin/flickr_img_parser words cat dog horse
+
+Tests can be run with:
+
+		$ be rake spec
 
 ## Development
 
