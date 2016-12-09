@@ -15,6 +15,8 @@ module FlickrImgParser
       @logger ||= Logger.new($stdout).tap do |log|
         log.progname = self.name
       end
+      @logger.level = ENV["LOG_LEVEL"] || Logger::INFO
+      @logger
     end
   end
 
