@@ -1,9 +1,9 @@
-require "flickr_img_parser/version"
-require "flickr_img_parser/random_word_creator"
-require "flickr_img_parser/command"
-require "flickr_img_parser/configuration"
-require "flickr_img_parser/image_parser"
-require "flickr_img_parser/image_downloader"
+require 'flickr_img_parser/version'
+require 'flickr_img_parser/random_word_creator'
+require 'flickr_img_parser/command'
+require 'flickr_img_parser/configuration'
+require 'flickr_img_parser/image_parser'
+require 'flickr_img_parser/image_downloader'
 
 module FlickrImgParser
   class << self
@@ -26,4 +26,4 @@ module FlickrImgParser
   end
 end
 
-require "flickr_img_parser/flickr_api"
+require 'flickr_img_parser/flickr_api'

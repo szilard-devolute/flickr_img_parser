@@ -1,0 +1,90 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - 'Vagrantfile'
+    - 'db/schema.rb'
+    # don't touch migrations
+    - !ruby/regexp /\/db\/migrate\/*/
+    - !ruby/regexp /\/db\/schema\/*/
+
+Rails:
+  Enabled: true
+
+# Assignment Branch Condition size for select_date is too high. [16.16/15]
+Metrics/AbcSize:
+  Max: 50
+
+# Class has too many lines. [153/100]
+Metrics/ClassLength:
+  Max: 1000
+
+# Cyclomatic complexity for i18n_resource_meta_key is too high. [7/6]
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+# Line is too long. [190/80]
+Metrics/LineLength:
+  Max: 1000
+
+# Method has too many lines. [16/10]
+Metrics/MethodLength:
+  Max: 100
+
+# Module has too many lines. [151/100]
+Metrics/ModuleLength:
+  Max: 1000
+
+# Avoid parameter lists longer than 5 parameters.
+# Complains about named arguments.
+# def self.call(message, params:, power:, controller:, matchable:, **env)
+Metrics/ParameterLists:
+  Max: 6
+
+# Removing Blocks Cop for RSpec
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+# Use a guard clause instead of wrapping the code inside a conditional expression.
+# if foo = get_it()
+Style/GuardClause:
+  Enabled: false
+
+# Use `%w` or `%W` for an array of words.
+# ["a", "b", "c"]
+Style/WordArray:
+  Enabled: false
+
+# Indent the right bracket the same as the start of the line where the left bracket is.
+# [ closing ]
+Style/IndentArray:
+  EnforcedStyle: consistent
+
+# Missing top-level class documentation comment.
+Style/Documentation:
+  Enabled: false
+
+# Align `.as_json` with `.new` on line 195.
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+
+# Align the operands of an expression in an assignment spanning multiple lines.
+Style/MultilineOperationIndentation:
+  Enabled: false
+
+# Align the parameters of a method call if they span more than one line.
+Style/AlignParameters:
+  Enabled: false
+
+# Align the elements of a hash literal if they span more than one line.",
+Style/AlignHash:
+  Enabled: false
+
+Style/PredicateName:
+  NameWhitelist:
+    - 'has_image?'
+
+# Use `%r` around regular expression.
+Style/RegexpLiteral:
+  Enabled: false

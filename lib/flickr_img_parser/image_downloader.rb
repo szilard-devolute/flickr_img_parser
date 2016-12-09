@@ -1,6 +1,5 @@
 module FlickrImgParser
   class ImageDownloader
-
     attr_reader :image_id_list
 
     def initialize(image_id_list = [])
@@ -16,13 +15,13 @@ module FlickrImgParser
 
     private
 
-      def download_image(id)
-        FlickrImgParser::FlickrApi.fetch_image_url(id)
-      end
+    def download_image(id)
+      FlickrImgParser::FlickrApi.fetch_image_url(id)
+    end
 
-      def image_url(image)
-        #returning the last image version (largest)
-        image["sizes"]["size"][-1]["source"]
-      end
+    def image_url(image)
+      # returning the last image version (largest)
+      image['sizes']['size'][-1]['source']
+    end
   end
 end

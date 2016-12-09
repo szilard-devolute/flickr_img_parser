@@ -13,40 +13,39 @@ module FlickrImgParser
       until image_id_list_size == IMAGE_NUMBER
         keyword = next_keyword
         image = load_image(keyword)
-        puts "Parsing image"
-        if exists?(image)
-          image_id_list << image_id(image)
-          puts image
-          puts "Image found"
-        end
+        puts 'Parsing image'
+        next unless exists?(image)
+        image_id_list << image_id(image)
+        puts image
+        puts 'Image found'
       end
       image_id_list
     end
 
     private
 
-      def image_id_list_size
-        image_id_list.length
-      end
+    def image_id_list_size
+      image_id_list.length
+    end
 
-      def next_keyword
-        keyword_list.shift || random_keyword
-      end
+    def next_keyword
+      keyword_list.shift || random_keyword
+    end
 
-      def random_keyword
-        FlickrImgParser::RandomWordCreator.get_word
-      end
+    def random_keyword
+      FlickrImgParser::RandomWordCreator.get_word
+    end
 
-      def load_image(keyword)
-        FlickrImgParser::FlickrApi.fetch_interesting_images(keyword)
-      end
+    def load_image(keyword)
+      FlickrImgParser::FlickrApi.fetch_interesting_images(keyword)
+    end
 
-      def exists?(image)
-        image["photos"]["photo"].length > 0
-      end
+    def exists?(image)
+      !image['photos']['photo'].empty?
+    end
 
-      def image_id(image)
-        image["photos"]["photo"][0]["id"]
-      end
+    def image_id(image)
+      image['photos']['photo'][0]['id']
+    end
   end
 end
