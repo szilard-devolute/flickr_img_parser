@@ -6,7 +6,7 @@ module FlickrImgParser
       @image_number = image_number
       @flickr_api_key = flickr_api_key
       @image_file_path = next_file_path
-      puts @image_file_path
+      FlickrImgParser.logger.debug @image_file_path
     end
 
     def next_file_path

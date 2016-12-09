@@ -9,7 +9,7 @@ module FlickrImgParser
     def download
       images = image_id_list.map { |id| download_image(id) }
       urls = images.map { |image| image_url(image) }
-      puts urls
+      FlickrImgParser.logger.debug urls
       urls
     end
 

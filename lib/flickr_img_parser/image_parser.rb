@@ -13,11 +13,11 @@ module FlickrImgParser
       until image_id_list_size == IMAGE_NUMBER
         keyword = next_keyword
         image = load_image(keyword)
-        puts 'Parsing image'
+        FlickrImgParser.logger.debug 'Parsing image'
         next unless exists?(image)
         image_id_list << image_id(image)
-        puts image
-        puts 'Image found'
+        FlickrImgParser.logger.debug image
+        FlickrImgParser.logger.debug 'Image found'
       end
       image_id_list
     end

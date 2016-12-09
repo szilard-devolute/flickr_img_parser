@@ -4,10 +4,18 @@ require 'flickr_img_parser/command'
 require 'flickr_img_parser/configuration'
 require 'flickr_img_parser/image_parser'
 require 'flickr_img_parser/image_downloader'
+require 'logger'
 
 module FlickrImgParser
   class << self
     attr_writer :configuration
+    attr_writer :logger
+
+    def logger
+      @logger ||= Logger.new($stdout).tap do |log|
+        log.progname = self.name
+      end
+    end
   end
 
   def self.getting_images(keyword_array)
