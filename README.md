@@ -22,16 +22,16 @@ Or install it yourself as:
 
 Run the following command from the command line:
 
-		$ be bin/flickr_img_parser words ARGV
+    $ be bin/flickr_img_parser words ARGV
 
 
 ARGV can be any number of keywords, so you could say:
-		
-		$ be bin/flickr_img_parser words cat dog horse
+    
+    $ be bin/flickr_img_parser words cat dog horse
 
 Tests can be run with:
 
-		$ be rake spec
+    $ be rake spec
 
 ## Development
 
