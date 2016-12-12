@@ -10,11 +10,13 @@ module FlickrImgParser
     end
 
     def retrieve_images
+      invalid = []
       until image_id_list_size == IMAGE_NUMBER
+        raise TooManyInvalid.new(invalid.inspect) if invalid.size > 5
         keyword = next_keyword
         image = load_image(keyword)
         FlickrImgParser.logger.debug 'Parsing image'
-        next unless valid?(image)
+        invalid << image and next unless valid?(image)
         image_id_list << image_id(image)
         FlickrImgParser.logger.debug image
         FlickrImgParser.logger.debug 'Image found'
@@ -84,5 +86,8 @@ module FlickrImgParser
     def image_id(image)
       image['photos']['photo'][0]['id']
     end
+
+    class TooManyInvalid < StandardError; end
+
   end
 end
