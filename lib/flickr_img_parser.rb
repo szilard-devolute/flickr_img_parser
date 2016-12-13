@@ -22,7 +22,9 @@ module FlickrImgParser
 
   def self.getting_images(keyword_array)
     image_id_list = FlickrImgParser::ImageParser.new(keyword_array).retrieve_images
-    FlickrImgParser::ImageDownloader.new(image_id_list).download
+    urls = FlickrImgParser::ImageDownloader.new(image_id_list).download
+    FlickrImgParser.logger.info urls
+    urls
   end
 
   def self.configure

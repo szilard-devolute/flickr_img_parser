@@ -1,7 +1,5 @@
 module FlickrImgParser
   class ImageParser
-    IMAGE_NUMBER = 10
-
     attr_reader :image_id_list, :keyword_list
 
     def initialize(keyword_list = [])
@@ -10,14 +8,14 @@ module FlickrImgParser
     end
 
     def retrieve_images
-      until image_id_list_size == IMAGE_NUMBER
+      until image_id_list_size == FlickrImgParser.configuration.image_number
         keyword = next_keyword
         image = load_image(keyword)
-        FlickrImgParser.logger.debug 'Parsing image'
+        FlickrImgParser.logger.info 'Parsing image'
         next unless valid?(image)
         image_id_list << image_id(image)
         FlickrImgParser.logger.debug image
-        FlickrImgParser.logger.debug 'Image found'
+        FlickrImgParser.logger.info 'Image found'
       end
       image_id_list
     end
@@ -48,7 +46,7 @@ module FlickrImgParser
       response && !error_response?(response) && exists?(response)
     end
 
-    def handling_exceptions &block
+    def handling_exceptions(&block)
       begin
         response = block.call
       rescue => e
@@ -57,7 +55,7 @@ module FlickrImgParser
       end
     end
 
-    def retrying &block
+    def retrying(&block)
       retries = 0
       begin
         response = block.call
@@ -78,7 +76,7 @@ module FlickrImgParser
     end
 
     def exists?(image)
-      !image['photos']['photo'].empty?
+      image['photos']['photo'].length > 0
     end
 
     def image_id(image)

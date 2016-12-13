@@ -9,10 +9,10 @@ module FlickrImgParser
         say('We need your Flickr API key first.')
         FlickrImgParser.configuration.flickr_api_key = ask('Flickr API key: ')
       end
-      FlickrImgParser.logger.debug "You added #{keywords.length} keyword(s)."
+      FlickrImgParser.logger.info "You added #{keywords.length} keyword(s)."
       FlickrImgParser.getting_images(keywords)
 
-      FlickrImgParser.logger.debug "Next montage path #{FlickrImgParser.configuration.image_file_path}"
+      FlickrImgParser.logger.info "Next montage path #{FlickrImgParser.configuration.image_file_path}"
     end
   end
 end
