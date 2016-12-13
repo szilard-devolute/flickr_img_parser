@@ -40,4 +40,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'httparty', '~> 0.14.0'
   spec.add_dependency 'thor', '~> 0.19.4'
+  spec.add_dependency 'dotenv', '~> 2.1', '>= 2.1.1'
 end
