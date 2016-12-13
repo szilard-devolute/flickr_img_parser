@@ -2,4 +2,4 @@
 
 require 'flickr_img_parser'
 
-FlickrImgParser::Command.start( ARGV )
+FlickrImgParser::Command.start(ARGV)
