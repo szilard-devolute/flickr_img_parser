@@ -1,10 +1,8 @@
 require 'open-uri'
 require 'tempfile'
-require 'rmagick'
 
 module FlickrImgParser
   class ImageComposer
-    include Magick
 
     attr_reader :image_url_list, :tempfiles
 
@@ -25,13 +23,24 @@ module FlickrImgParser
       image_url_list.each_with_index do |url, index|
         image_file = Tempfile.new(["tmp_image", '.jpg'])
         image_file.write open(url).read
-        tempfiles << image_file
+        image_file.rewind
+        image_file.close
+        puts image_file.path
+        cropped_image_file = Tempfile.new(["tmp_cropped_image", '.jpg'])
+        cropped_image_file.rewind
+        cropped_image_file.close
+        puts cropped_image_file.path
+        debugger
+        # command = "convert #{image_file.path}: -resize '400x300^' -gravity center -crop 400x300+0+0 +repage #{cropped_image_file.path}"
+        # system(command)
+        `convert #{image_file.path}: -resize '400x300^' -gravity center -crop 400x300+0+0 +repage #{cropped_image_file.path}`
+        tempfiles << cropped_image_file
       end
-      puts tempfiles
+      puts tempfiles.map(&:path)
     end
 
     def compose_montage
-      `montage #{tempfiles.map(&:path).join(" ")} #{montage_file_path}`
+      `montage #{tempfiles.map(&:path).join(" ")} -geometry 400x300>-10-10 -tile 2x5 #{montage_file_path}`
     end
 
     def delete_tempfiles
