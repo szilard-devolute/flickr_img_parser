@@ -26,15 +26,12 @@ module FlickrImgParser
         image_file.rewind
         image_file.close
         puts image_file.path
-        cropped_image_file = Tempfile.new(["tmp_cropped_image", '.jpg'])
-        cropped_image_file.rewind
-        cropped_image_file.close
-        puts cropped_image_file.path
-        debugger
-        # command = "convert #{image_file.path}: -resize '400x300^' -gravity center -crop 400x300+0+0 +repage #{cropped_image_file.path}"
-        # system(command)
-        `convert #{image_file.path}: -resize '400x300^' -gravity center -crop 400x300+0+0 +repage #{cropped_image_file.path}`
-        tempfiles << cropped_image_file
+        # cropped_image_file = Tempfile.new(["tmp_cropped_image", '.jpg'])
+        # cropped_image_file.rewind
+        # cropped_image_file.close
+        # puts cropped_image_file.path
+        `convert #{image_file.path} -resize 400x300^ -gravity center -crop 400x300+0+0 +repage #{image_file.path}`
+        tempfiles << image_file
       end
       puts tempfiles.map(&:path)
     end
