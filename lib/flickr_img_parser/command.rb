@@ -2,21 +2,58 @@ require 'thor'
 
 module FlickrImgParser
   class Command < Thor
-    desc 'words KEYWORDS', 'You can add up to 10 space separated keyword for your flickr image collage. If you add less, we will fill it up with random images.'
+    desc 'start KEYWORDS', 'You can add up to 10 space separated keyword for your flickr image collage. If you add less, we will fill it up with random images.'
 
-    def words(*keywords)
+    def start(*keywords)
+      say('
+        Welcome! This programme will let you create an image collage from random keywords.
+        You can choose up to ten keywords, and I will search images on Flickr associated to them.
+        If you enter less than ten keywords, I will generate as many as I need to have ten keywords.
+        If you enter more than ten, any extra one will be disregarded.
+
+        To start, you need to:
+        1) enter your Flickr API key. Please type:
+           $export FLICKR_API_KEY=your_api_key
+        2) give me a path where you would like to have your collage saved. Please type:
+           $export FLICKR_IMAGE_PATH=/your/desired/path/
+      ')
+
       unless FlickrImgParser.configuration.flickr_api_key
-        say('Before you run the code you have to save your Flickr API key first. Pls type $export FLICKR_API_KEY=your_api_key')
+        say('
+          You cannot run this programme without a Flickr API key.
+          Please type $export FLICKR_API_KEY=your_api_key
+        ')
         exit
       end
+
       unless FlickrImgParser.configuration.image_file_path
-        say('Before you run the code you have to provide a path with filename where you wanna save your image. Pls type $export FLICKR_IMAGE_PATH=/home/username/desktop/flickr_images')
+        say('
+          You cannot run this programme without giving a path for your collage image.
+          Please type $export FLICKR_IMAGE_PATH=/your/desired/path/
+        ')
         exit
       end
-      FlickrImgParser.logger.info "You added #{keywords.length} keyword(s)."
+
+      say("
+        Ok, awesome! You entered #{keywords.length} keyword(s).
+      ")
+
+      if keywords.length < 10
+        say("
+          I will now search for #{10 - keywords.length} additional keywords, and then fetch
+          associated images to compose a collage.
+        ")
+      else
+        say("
+          I will fetch images to compose a collage. Get ready....
+        ")
+      end
+
       FlickrImgParser.getting_images(keywords)
 
-      FlickrImgParser.logger.info "Next montage path #{FlickrImgParser.configuration.image_file_path}"
+      say("
+        I am done! Thanks for playing! You can check out your collage under: #{FlickrImgParser.configuration.image_file_path}
+      ")
     end
   end
 end
