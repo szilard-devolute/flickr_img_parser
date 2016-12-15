@@ -1,16 +1,17 @@
 module FlickrImgParser
   class ImageDownloader
-    attr_reader :image_id_list
+    attr_reader :image_id_list, :url_list
 
-    def initialize(image_id_list = [])
+    def initialize(image_id_list = [], url_list = [])
       @image_id_list = image_id_list
+      @url_list = url_list
     end
 
     def download
       images = image_id_list.map { |id| download_image(id) }
-      urls = images.map { |image| image_url(image) }
-      FlickrImgParser.logger.info urls
-      urls
+      images.each { |image| url_list << image_url(image) }
+      # format_url_list
+      url_list
     end
 
     private
@@ -22,6 +23,14 @@ module FlickrImgParser
     def image_url(image)
       # returning the last image version (largest)
       image['sizes']['size'][-1]['source']
+    end
+
+    def format_url_list
+      url_list.each do |url|
+        uri = URI.parse(url)
+        uri.scheme = 'http'
+        url = uri.to_s
+      end
     end
   end
 end

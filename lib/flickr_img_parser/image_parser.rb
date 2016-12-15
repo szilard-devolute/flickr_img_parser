@@ -31,7 +31,7 @@ module FlickrImgParser
     end
 
     def random_keyword
-      FlickrImgParser::RandomWordCreator.get_word
+      FlickrImgParser::RandomWordApi.get_word
     end
 
     def load_image(keyword)
