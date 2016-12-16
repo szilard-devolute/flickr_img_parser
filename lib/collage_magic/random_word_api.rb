@@ -1,6 +1,6 @@
 require 'httparty'
 
-module FlickrImgParser
+module CollageMagic
   module RandomWordApi
     include HTTParty
 

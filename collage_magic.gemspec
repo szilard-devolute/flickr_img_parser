@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'flickr_img_parser/version'
+require 'collage_magic/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'flickr_img_parser'
-  spec.version       = FlickrImgParser::VERSION
-  spec.authors       = ['Chiara Sarta', 'Szilard Magyar', 'Christian Woerle']
+  spec.name          = 'collage_magic'
+  spec.version       = CollageMagic::VERSION
+  spec.authors       = ['Chiara Sarta', 'Szilard Magyar', 'Christian Woerle', 'David Piegza']
   spec.email         = ['jobs@devolute.org']
 
-  spec.summary       = 'Getting Flickr images and saving them into a file.'
+  spec.summary       = 'Creates a collage from ten Flickr images related to user input.'
   spec.description   = 'Flickr_img_parser is  command line tool with which you can make an API request to Flickr and save the response as a collage in an image file'
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
@@ -31,7 +31,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.13'
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'byebug', '~> 9.0', '>= 9.0.6'
   spec.add_development_dependency 'rspec', '~> 3.5'
   spec.add_development_dependency 'vcr', '~> 3.0', '>= 3.0.3'
   spec.add_development_dependency 'webmock', '~> 2.3', '>= 2.3.1'
@@ -40,5 +39,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'httparty', '~> 0.14.0'
   spec.add_dependency 'thor', '~> 0.19.4'
-  spec.add_dependency 'rmagick', '~> 2.16'
 end

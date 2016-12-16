@@ -9,3 +9,4 @@
 /tmp/
 /fixtures/
 /.byebug_history
+/spec/test_images/*

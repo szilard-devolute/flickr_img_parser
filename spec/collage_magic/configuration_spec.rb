@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module FlickrImgParser
+module CollageMagic
   describe Configuration do
     describe 'api_key' do
       let(:configuration) { Configuration.new }

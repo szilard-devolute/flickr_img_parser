@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'flickr_img_parser'
-
-FlickrImgParser::Command.start(ARGV)
