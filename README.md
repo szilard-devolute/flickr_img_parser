@@ -1,6 +1,13 @@
 # CollageMagic
 
-TODO: With CollageMagic you can download the most interesting images from Flickr and save the as a collage.
+CollageMagic is command line tool that lets you create an image collage from
+images retrieved on Flickr and based on keywords.
+
+You can enter up to ten keywords. If you enter less, the programme will add up
+enough keywords to have ten. If you enter more, any extra one will be disregarded.
+
+The keyword-related images will then be combined to create an image collage that will
+be saved to your chosen path.
 
 ## Installation
 
