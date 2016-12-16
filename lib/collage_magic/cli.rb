@@ -28,7 +28,7 @@ module CollageMagic
       unless CollageMagic.configuration.collage_file_path
         say('
           You cannot run this programme without giving a path for your collage image.
-          Please type $ export COLLAGE_MAGIC_IMAGE_PATH=/your/desired/path/
+          Please type $ export COLLAGE_MAGIC_IMAGE_PATH=./
         ')
         exit
       end
