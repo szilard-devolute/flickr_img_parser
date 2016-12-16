@@ -4,7 +4,7 @@ module FlickrImgParser
   describe FlickrApi do
     context 'sends a successfull API request to flickr', :vcr do
       before do
-        FlickrImgParser.configuration.flickr_api_key = '44f36a01101a6c77bd111c23e7de414a'
+        FlickrImgParser.configuration.flickr_api_key = ENV['FLICKR_API_KEY']
       end
 
       it 'returns the proper data when it hits the search API' do

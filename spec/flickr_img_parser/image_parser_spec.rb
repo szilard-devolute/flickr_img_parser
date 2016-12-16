@@ -17,9 +17,8 @@ module FlickrImgParser
     context 'with more than 10 images' do
       let(:keywords) { Array.new(12, 'cat') }
 
-      it "doesn't call the random word API" do
+      it 'does not call the random word API' do
         subject.retrieve_images
-        #expect(subject).to_not receive(:random_keyword)
         expect(keywords).to_not eq([])
       end
     end
@@ -27,19 +26,18 @@ module FlickrImgParser
     context 'with less than 10 images' do
       let(:keywords) { ['cat'] }
 
-      it 'calls the random words API' do
+      it 'calls the random word API' do
         subject.retrieve_images
-        #expect(subject).to receive(:random_keyword)
         expect(keywords).to eq([])
       end
     end
 
-    describe "handling exceptions" do
+    describe 'handling exceptions' do
       let(:keywords) { [] }
 
-      context "with a Timeout" do
+      context 'with a timeout' do
 
-        it "retries 3 times and then re-raises the exception" do
+        it 'retries 3 times and then re-raises the exception' do
 
           expect(FlickrImgParser::FlickrApi).to receive(:fetch_interesting_images).exactly(5).times.and_raise(Net::ReadTimeout)
           expect{ subject.retrieve_images }.to raise_error(Net::ReadTimeout)

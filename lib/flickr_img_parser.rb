@@ -30,10 +30,6 @@ module FlickrImgParser
     @logger
   end
 
-  def self.root
-    File.dirname(__dir__)
-  end
-
   def self.configure
     yield(configuration)
   end

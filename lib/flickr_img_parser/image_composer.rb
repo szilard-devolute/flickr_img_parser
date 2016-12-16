@@ -28,7 +28,6 @@ module FlickrImgParser
         puts image_file.path
         `convert #{image_file.path} -resize 400x300^ -gravity center -crop 400x300+0+0 +repage #{image_file.path}`
         tempfiles << image_file
-
       end
       puts tempfiles.map(&:path)
     end
@@ -45,7 +44,7 @@ module FlickrImgParser
     end
 
     def montage_file_path
-      dir = ENV['FLICKR_IMAGE_PATH']
+      dir = FlickrImgParser.configuration.image_file_path
       file_number = Dir["#{dir}/**/*"].length + 1
       File.join("#{dir}/flickr_montage_#{file_number}.jpg")
     end
