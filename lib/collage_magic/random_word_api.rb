@@ -1,7 +1,7 @@
 require 'httparty'
 
-module FlickrImgParser
-  module RandomWordCreator
+module CollageMagic
+  module RandomWordApi
     include HTTParty
 
     base_uri 'http://www.setgetgo.com/randomword/get.php'

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'collage_magic'
+
+CollageMagic::Cli.start(ARGV)

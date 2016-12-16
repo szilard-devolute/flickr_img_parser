@@ -1,13 +1,20 @@
-# FlickrImgParser
+# CollageMagic
 
-TODO: With FlickrImgParser you can download the most interesting images from Flickr and save the as a collage.
+CollageMagic is command line tool that lets you create an image collage from
+images retrieved on Flickr and based on keywords.
+
+You can enter up to ten keywords. If you enter less, the programme will add up
+enough keywords to have ten. If you enter more, any extra one will be disregarded.
+
+The keyword-related images will then be combined to create an image collage that will
+be saved to your chosen path.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'flickr_img_parser'
+gem 'collage_magic'
 ```
 
 And then execute:
@@ -16,18 +23,18 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install flickr_img_parser
+    $ gem install collage_magic
 
 ## Usage
 
 Run the following command from the command line:
 
-    $ be bin/flickr_img_parser words ARGV
+    $ be bin/collage_magic start ARGV
 
 
 ARGV can be any number of keywords, so you could say:
-    
-    $ be bin/flickr_img_parser words cat dog horse
+
+    $ be bin/collage_magic start cat dog horse
 
 Tests can be run with:
 
@@ -41,5 +48,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/flickr_img_parser.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/collage_magic.

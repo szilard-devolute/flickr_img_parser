@@ -1,13 +1,9 @@
 require 'spec_helper'
 
-module FlickrImgParser
+module CollageMagic
   describe Configuration do
     describe 'api_key' do
       let(:configuration) { Configuration.new }
-
-      it 'default value is nil' do
-        expect(configuration.flickr_api_key).to eq nil
-      end
 
       it 'value can be set' do
         configuration.flickr_api_key = 'haha1'

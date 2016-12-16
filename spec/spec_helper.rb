@@ -1,4 +1,4 @@
-require 'flickr_img_parser'
+require 'collage_magic'
 require 'vcr'
 
 VCR.configure do |config|
