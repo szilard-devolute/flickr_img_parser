@@ -34,8 +34,6 @@ module CollageMagic
     yield(configuration)
   end
 
-  private
-
   def self.configuration
     @configuration ||= CollageMagic::Configuration.new
   end
